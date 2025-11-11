@@ -3,7 +3,6 @@
 .h1Style {
   display: flex;
   justify-content: center;
-  padding-top: 2rem;
   padding-bottom: 2rem;
 }
 
@@ -13,25 +12,29 @@
   padding-bottom: 3rem;
 }
 
-.searchArea {
+.searchSection {
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+.searchArea {
+  margin: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .inputContent {
   font-family: system-ui, Roboto;
   padding: 0.1rem;
+  margin-block: 2rem;
+  margin-left: 2rem;
   padding-right: 20rem;
-  margin-bottom: 2rem;
   box-sizing: border-box;
 }
 
 .searchBtn {
   padding: 0.2rem;
-  margin-bottom: 2rem;
-  margin-inline: 0.3rem;
+
+  margin-right: 2rem;
   color: white;
   background-color: rgb(192, 134, 231);
   border: none;
