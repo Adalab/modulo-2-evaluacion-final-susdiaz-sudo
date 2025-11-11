@@ -1,0 +1,85 @@
+@use '../core/variables' as vars;
+
+.h1Style {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.h2Style {
+  font-size: 1.5rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.searchArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.inputContent {
+  font-family: system-ui, Roboto;
+  padding: 0.1rem;
+  padding-right: 20rem;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+.searchBtn {
+  padding: 0.2rem;
+  margin-bottom: 2rem;
+  margin-inline: 0.3rem;
+  color: white;
+  background-color: rgb(192, 134, 231);
+  border: none;
+  cursor: pointer;
+}
+
+.purchaseSection {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.popularProducts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.productsList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  justify-content: center;
+  list-style-type: none;
+  max-width: 55rem;
+}
+
+.productsList li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  gap: 0.3em;
+}
+
+.productsList p {
+  text-align: center;
+}
+
+.productsList img {
+  width: 15rem;
+}
+
+.purchaseBtn {
+  color: white;
+  background-color: rgb(192, 134, 231);
+  border: none;
+  padding: 0.2rem;
+  cursor: pointer;
+}
