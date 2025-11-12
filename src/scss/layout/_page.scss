@@ -1,6 +1,7 @@
 @use '../core/variables' as vars;
 
 body {
+  font-family: vars.$font-main;
   height: 100vh;
   padding: 2rem;
 }

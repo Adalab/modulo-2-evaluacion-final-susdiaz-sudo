@@ -1,11 +1,9 @@
 <main>
   <h1 class="h1Style">My online store 🛍️</h1>
-  <section class="searchSection">
-    <div class="searchArea">
-      <input class="inputContent" type="text" placeholder="Type here your search">
-      <button class="searchBtn">Find</button>
-    </div>
-  </section>
+  <div class="searchArea">
+    <input class="inputContent js_inputContent" id="search" type="text" value="" placeholder="Type here your search">
+    <button class="searchBtn js_searchBtn">Find</button>
+  </div>
   <section class="purchaseSection">
     <div>
       <h2 class="h2Style">Shopping Cart🛒</h2>
@@ -13,6 +11,7 @@
     <div class="popularProducts">
       <h2 class="h2Style">Most popular products💎</h2>
       <ul class="productsList js_productsList"></ul>
+      <span class="hidden notFoundSpan js_notFoundSpan">No results found</span>
     </div>
   </section>
 </main>
