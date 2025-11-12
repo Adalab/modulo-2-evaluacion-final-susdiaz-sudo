@@ -7,21 +7,29 @@ const searchBtn = document.querySelector(".js_searchBtn");
 const inputContent = document.querySelector(".js_inputContent");
 const notFoundSpan = document.querySelector(".js_notFoundSpan");
 
+const purchaseBtn = document.querySelector(".js_purchaseBtn");
+const deleteBtn = document.querySelector(".js_deleteBtn");
+const shoppingCart = document.querySelector(".js_shoppingCart");
+const product = document.querySelector(".js_product");
+
 // Funciones
+
 function renderProduct(product) {
   let productContent = `
-    <li id="product${product.id}">
+    <li class="js_product" id="product${product.id}">
       <img src="${product.image}" alt="${product.title}"></img>
       <p>${product.title}</p>
       <p>${product.price} €</p>
-      <button class="purchaseBtn">Comprar</button>
+      <button class="purchaseBtn js_purchaseBtn">Comprar</button>
+      <button class="deleteBtn js_deleteBtn hidden">Eliminar</button>
     </li>
     `;
   return productContent;
 }
 
+// Petición al servidor
+
 function requestProducts() {
-  // Petición al servidor
   return fetch(
     "https://raw.githubusercontent.com/Adalab/resources/master/apis/products.json"
   )
@@ -35,6 +43,7 @@ function requestProducts() {
 }
 
 // Eventos
+
 searchBtn.addEventListener("click", (ev) => {
   requestProducts().then((products) => {
     productsList.innerHTML = "";
@@ -58,6 +67,13 @@ searchBtn.addEventListener("click", (ev) => {
   });
 });
 
-// Petición al servidor al cargar la página
-
 requestProducts();
+
+purchaseBtn.addEventListener("click", (ev) => {
+  ev.preventDefault();
+  console.log("Has hecho click en el botón comprar");
+  shoppingCart.innerHTML += renderProduct(product);
+  purchaseBtn.classList.add("hidden");
+  deleteBtn.classList.remove("hidden");
+  productContent.classList.add("productSelect");
+});
