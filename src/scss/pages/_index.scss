@@ -1,5 +1,9 @@
 @use '../core/variables' as vars;
 
+.hidden {
+  display: none;
+}
+
 .h1Style {
   display: flex;
   justify-content: center;
@@ -82,4 +86,9 @@
   border: none;
   padding: 0.2rem;
   cursor: pointer;
+}
+
+.notFoundSpan {
+  font-size: 3rem;
+  font-weight: bold;
 }
