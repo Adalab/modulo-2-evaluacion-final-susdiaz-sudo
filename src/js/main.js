@@ -73,7 +73,6 @@ if (localStorage.getItem("productsHtmlLocal") === null) {
       productsList.innerHTML = renderProducts(allProducts);
       localStorage.setItem("allProducts", JSON.stringify(allProducts));
       localStorage.setItem("productsHtmlLocal", productsList.innerHTML);
-      return data;
     });
 } else {
   allProducts = JSON.parse(localStorage.getItem("allProducts"));
@@ -109,6 +108,7 @@ searchBtn.addEventListener("click", (ev) => {
   }
 
   inputContent.value = "";
+  inputContent.placeholder = "Results: " + results;
 });
 
 productsList.addEventListener("click", (ev) => {
