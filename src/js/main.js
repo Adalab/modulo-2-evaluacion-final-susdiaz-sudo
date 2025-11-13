@@ -35,7 +35,6 @@ function addProductCart(productId) {
     return product.id === parseInt(productId);
   });
   cartProducts.push(productSelected);
-  refreshLocalStorage();
 
   shoppingCart.innerHTML = renderProducts(cartProducts);
 }
@@ -47,16 +46,12 @@ function removeProductCart(productId) {
 
   if (cartIndex !== -1) {
     cartProducts.splice(cartIndex, 1);
-    refreshLocalStorage();
   }
 
   shoppingCart.innerHTML = renderProducts(cartProducts);
 }
 
-function refreshLocalStorage() {
-  localStorage.removeItem("cartLocal");
-  localStorage.removeItem("productsHtmlLocal");
-
+function updateLocalStorage() {
   localStorage.setItem("cartLocal", JSON.stringify(cartProducts));
   localStorage.setItem("productsHtmlLocal", productsList.innerHTML);
 }
@@ -121,8 +116,8 @@ productsList.addEventListener("click", (ev) => {
     purchaseBtn.classList.remove("purchaseBtn");
     purchaseBtn.textContent = "Remove";
     productElement.classList.add("productSelected");
-    refreshLocalStorage();
     addProductCart(productElement.id);
+    updateLocalStorage();
   } else if (clickedElement.classList.contains("deleteBtn")) {
     const productElement = clickedElement.parentNode;
     const purchaseBtn = clickedElement;
@@ -130,7 +125,7 @@ productsList.addEventListener("click", (ev) => {
     purchaseBtn.classList.add("purchaseBtn");
     purchaseBtn.textContent = "Buy";
     productElement.classList.remove("productSelected");
-    refreshLocalStorage();
     removeProductCart(productElement.id);
+    updateLocalStorage();
   }
 });
