@@ -5,13 +5,13 @@
 }
 
 .productSelected {
-  background-color: rgb(192, 134, 231);
+  background-color: vars.$color-bg;
 }
 
 .deleteBtn {
   width: 4rem;
   color: white;
-  background-color: rgb(78, 27, 112);
+  background-color: vars.$color-bg-2;
   border: none;
   padding: 0.2rem;
   cursor: pointer;
@@ -40,7 +40,7 @@
 }
 
 .inputContent {
-  font-family: system-ui, Roboto;
+  font-family: vars.$font-main;
   padding: 0.1rem;
   margin-block: 2rem;
   margin-left: 2rem;
@@ -53,7 +53,7 @@
 
   margin-right: 2rem;
   color: white;
-  background-color: rgb(192, 134, 231);
+  background-color: vars.$color-bg;
   border: none;
   cursor: pointer;
 }
@@ -113,7 +113,7 @@
 .purchaseBtn {
   width: 4rem;
   color: white;
-  background-color: rgb(192, 134, 231);
+  background-color: vars.$color-bg;
   border: none;
   padding: 0.2rem;
   cursor: pointer;
