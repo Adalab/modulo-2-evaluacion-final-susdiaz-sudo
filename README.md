@@ -40,21 +40,21 @@ Una web hecha con **HTML, CSS y JavaScript** donde puedes **buscar productos**, 
 
 📁 proyecto-vuelta-al-cole
 │
-└── /src/
+└── /src/    
    ├── index.html        # Página principal
    ├── /partials/        # Carpeta del contenido de las partes del index.html
-      ├──header.html
+      ├──header.html 
       ├──main.html
       ├──footer.html
    ├──/scss/
-      ├── reset.scss
-      ├── variables.scss
-      ├── footer.scss
-      ├── header.scss
-      ├── page.scss
-      ├── index.scss
-      ├── main.scss       # Estilos CSS
-└── /public/              # Carpeta de iconos e imágenes adicionales
+      ├── reset.scss     # Estilos CSS
+      ├── variables.scss 
+      ├── footer.scss 
+      ├── header.scss 
+      ├── page.scss 
+      ├── index.scss 
+      ├── main.scss 
+└── /public/             # Carpeta de iconos e imágenes adicionales (usada en el HTML y CSS)
 
 ## 👩‍💻 Autor/a
 
