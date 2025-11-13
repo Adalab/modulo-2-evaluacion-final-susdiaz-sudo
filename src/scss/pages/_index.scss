@@ -68,13 +68,19 @@
   align-items: center;
 }
 
-.productsList, .shoppingCart {
+.productsList {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   justify-content: center;
   list-style-type: none;
   max-width: 55rem;
+}
+
+.shoppingCart {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .productsList li, .shoppingCart li {
