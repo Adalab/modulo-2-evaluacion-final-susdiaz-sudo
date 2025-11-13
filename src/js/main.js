@@ -64,8 +64,6 @@ function refreshLocalStorage() {
 // Petición al servidor
 
 if (localStorage.getItem("productsHtmlLocal") === null) {
-  console.log("Obteniendo datos de servidor");
-
   fetch(
     "https://raw.githubusercontent.com/Adalab/resources/master/apis/products.json"
   )
@@ -78,13 +76,11 @@ if (localStorage.getItem("productsHtmlLocal") === null) {
       return data;
     });
 } else {
-  console.log("Obteniendo datos de localStorage");
   allProducts = JSON.parse(localStorage.getItem("allProducts"));
   productsList.innerHTML = localStorage.getItem("productsHtmlLocal");
 }
 
 if (localStorage.getItem("cartLocal") !== null) {
-  console.log("Leyendo carrito de localStorage");
   cartProducts = JSON.parse(localStorage.getItem("cartLocal"));
   shoppingCart.innerHTML = renderProducts(cartProducts);
 }
