@@ -2,9 +2,11 @@
 
 // Constantes y variables
 
+// Arrays primeramente vacíos del listado de productos y del carrito
 let allProducts = [];
 let cartProducts = [];
 
+// Uso del querySelector para utilizar elementos del html
 const productsList = document.querySelector(".js_productsList");
 const notFoundSpan = document.querySelector(".js_notFoundSpan");
 
@@ -14,7 +16,7 @@ const inputContent = document.querySelector(".js_inputContent");
 const shoppingCart = document.querySelector(".js_shoppingCart");
 
 // Funciones
-
+// Función para pintar cada uno de los productos en el listado de productos populares
 function renderProducts(products) {
   let productsHtml = "";
   for (let product of products) {
@@ -30,6 +32,7 @@ function renderProducts(products) {
   return productsHtml;
 }
 
+// Función para añadir un producto al carrito de compra
 function addProductCart(productId) {
   const productSelected = allProducts.find((product) => {
     return product.id === parseInt(productId);
@@ -39,6 +42,7 @@ function addProductCart(productId) {
   shoppingCart.innerHTML = renderProducts(cartProducts);
 }
 
+// Función para quitar un producto del carrito de compra
 function removeProductCart(productId) {
   const cartIndex = cartProducts.findIndex(
     (product) => product.id === parseInt(productId)
@@ -51,13 +55,14 @@ function removeProductCart(productId) {
   shoppingCart.innerHTML = renderProducts(cartProducts);
 }
 
+// Función para actualizar el localStorage cada vez que añadimos o quitamos un producto en el carrito
 function updateLocalStorage() {
   localStorage.setItem("cartLocal", JSON.stringify(cartProducts));
   localStorage.setItem("productsHtmlLocal", productsList.innerHTML);
 }
 
 // Petición al servidor
-
+// Petición a la API, teniendo en cuenta si aún no se han recogido los datos del localStorage. 
 if (localStorage.getItem("productsHtmlLocal") === null) {
   fetch(
     "https://raw.githubusercontent.com/Adalab/resources/master/apis/products.json"
@@ -69,18 +74,21 @@ if (localStorage.getItem("productsHtmlLocal") === null) {
       localStorage.setItem("allProducts", JSON.stringify(allProducts));
       localStorage.setItem("productsHtmlLocal", productsList.innerHTML);
     });
+// Una vez recogidos y guardados en el localStorage, al cargar la página, ya no necesita pedir los datos a la API.
 } else {
   allProducts = JSON.parse(localStorage.getItem("allProducts"));
   productsList.innerHTML = localStorage.getItem("productsHtmlLocal");
 }
 
+// Si el carrito no está vacío, los productos se guartdan en el localStorage y se recuperan al cargar la página
 if (localStorage.getItem("cartLocal") !== null) {
   cartProducts = JSON.parse(localStorage.getItem("cartLocal"));
   shoppingCart.innerHTML = renderProducts(cartProducts);
 }
 
 // Eventos
-
+// Un evento click en el botón buscar para filtrar (sin tener en cuenta mayus o minus) los 
+// productos que queramos pintar en los productos populares.
 searchBtn.addEventListener("click", (ev) => {
   productsList.innerHTML = "";
   notFoundSpan.classList.add("hidden");
@@ -95,9 +103,9 @@ searchBtn.addEventListener("click", (ev) => {
       inputContent.placeholder = "Results: " + results;
     }
   }
-
+// Pinta el listado con los productos filtrados
   productsList.innerHTML = renderProducts(foundProducts);
-
+// Aparece un mensaje que indica que no se han encontrado los productos buscados
   if (results === 0) {
     notFoundSpan.classList.remove("hidden");
   }
@@ -105,7 +113,9 @@ searchBtn.addEventListener("click", (ev) => {
   inputContent.value = "";
   inputContent.placeholder = "Results: " + results;
 });
-
+// Un evento click en el listado de los productos para que, utilizando el botón comprar en cada uno de ellos,
+// se añada el producto al carro. En el listado, cada producto seleccionado para comprar 
+// aparece con un color de fondo y el botón cambiará a eliminar.
 productsList.addEventListener("click", (ev) => {
   ev.preventDefault();
   const clickedElement = ev.target;
@@ -118,6 +128,7 @@ productsList.addEventListener("click", (ev) => {
     productElement.classList.add("productSelected");
     addProductCart(productElement.id);
     updateLocalStorage();
+// Lo mismo para quitarlos del carro y que vuelva a aparecer el botón comprar y el fondo original.
   } else if (clickedElement.classList.contains("deleteBtn")) {
     const productElement = clickedElement.parentNode;
     const purchaseBtn = clickedElement;
