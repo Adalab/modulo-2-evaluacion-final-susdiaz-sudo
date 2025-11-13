@@ -18,11 +18,11 @@ Una web hecha con **HTML, CSS y JavaScript** donde puedes **buscar productos**, 
 
 | 💡 Tecnología | 💬 Uso |
 
-| **HTML5** | Estructura de la app |
-| **CSS3** | Estilos y diseño |
-| **JavaScript (ES6+)** | Lógica del carrito y eventos |
-| **Fetch API** | Carga de productos desde la API de Adalab |
-| **LocalStorage** | Guardado de datos entre sesiones |
+| **HTML5** | Estructura de la app \
+| **CSS3** | Estilos y diseño \
+| **JavaScript (ES6+)** | Lógica del carrito y eventos \
+| **Fetch API** | Carga de productos desde la API de Adalab \
+| **LocalStorage** | Guardado de datos entre sesiones 
 
 ---
 
@@ -38,23 +38,22 @@ Una web hecha con **HTML, CSS y JavaScript** donde puedes **buscar productos**, 
 
 ## 📁 Estructura del proyecto
 
-📁 proyecto-vuelta-al-cole
-│
-└── /src/    
-   ├── index.html        # Página principal
-   ├── /partials/        # Carpeta del contenido de las partes del index.html
-      ├──header.html 
-      ├──main.html
-      ├──footer.html
-   ├──/scss/
-      ├── reset.scss     # Estilos CSS
-      ├── variables.scss 
-      ├── footer.scss 
-      ├── header.scss 
-      ├── page.scss 
-      ├── index.scss 
-      ├── main.scss 
-└── /public/             # Carpeta de iconos e imágenes adicionales (usada en el HTML y CSS)
+    │
+    └── /src/    
+       ├── index.html        # Página principal
+       ├── /partials/        # Carpeta del contenido de las partes del index.html
+          ├──header.html 
+          ├──main.html
+          ├──footer.html
+       ├──/scss/
+          ├── reset.css     
+          ├── variables.css 
+          ├── footer.css 
+          ├── header.css 
+          ├── page.css 
+          ├── index.css 
+          ├── main.css     # Estilos CSS
+    └── /public/           # Carpeta de iconos e imágenes adicionales 
 
 ## 👩‍💻 Autor/a
 
