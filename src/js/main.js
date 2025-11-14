@@ -15,20 +15,30 @@ const inputContent = document.querySelector(".js_inputContent");
 
 const shoppingCart = document.querySelector(".js_shoppingCart");
 
+const resultsBtn = document.querySelector(".js_results");
+
 // Funciones
 // Función para pintar cada uno de los productos en el listado de productos populares
 function renderProducts(products) {
   let productsHtml = "";
+  let discountedProducts = "";
   for (let product of products) {
+    if (product.price >= 50) {
+      discountedProducts = "";
+    } else {
+      discountedProducts = "discounted";
+    }
     productsHtml += `
     <li class="js_product" id="${product.id}">
       <img src="${product.image}" alt="${product.title}"></img>
       <p>${product.title}</p>
       <p>${product.price} €</p>
+      <p>${discountedProducts}</p>
       <button class="purchaseBtn js_purchaseBtn">Buy</button>
     </li>
     `;
   }
+  console.log(discountedProducts);
   return productsHtml;
 }
 
@@ -62,7 +72,7 @@ function updateLocalStorage() {
 }
 
 // Petición al servidor
-// Petición a la API, teniendo en cuenta si aún no se han recogido los datos del localStorage. 
+// Petición a la API, teniendo en cuenta si aún no se han recogido los datos del localStorage.
 if (localStorage.getItem("productsHtmlLocal") === null) {
   fetch(
     "https://raw.githubusercontent.com/Adalab/resources/master/apis/products.json"
@@ -74,7 +84,7 @@ if (localStorage.getItem("productsHtmlLocal") === null) {
       localStorage.setItem("allProducts", JSON.stringify(allProducts));
       localStorage.setItem("productsHtmlLocal", productsList.innerHTML);
     });
-// Una vez recogidos y guardados en el localStorage, al cargar la página, ya no necesita pedir los datos a la API.
+  // Una vez recogidos y guardados en el localStorage, al cargar la página, ya no necesita pedir los datos a la API.
 } else {
   allProducts = JSON.parse(localStorage.getItem("allProducts"));
   productsList.innerHTML = localStorage.getItem("productsHtmlLocal");
@@ -87,7 +97,7 @@ if (localStorage.getItem("cartLocal") !== null) {
 }
 
 // Eventos
-// Un evento click en el botón buscar para filtrar (sin tener en cuenta mayus o minus) los 
+// Un evento click en el botón buscar para filtrar (sin tener en cuenta mayus o minus) los
 // productos que queramos pintar en los productos populares.
 searchBtn.addEventListener("click", (ev) => {
   productsList.innerHTML = "";
@@ -103,9 +113,9 @@ searchBtn.addEventListener("click", (ev) => {
       inputContent.placeholder = "Results: " + results;
     }
   }
-// Pinta el listado con los productos filtrados
+  // Pinta el listado con los productos filtrados
   productsList.innerHTML = renderProducts(foundProducts);
-// Aparece un mensaje que indica que no se han encontrado los productos buscados
+  // Aparece un mensaje que indica que no se han encontrado los productos buscados
   if (results === 0) {
     notFoundSpan.classList.remove("hidden");
   }
@@ -114,7 +124,7 @@ searchBtn.addEventListener("click", (ev) => {
   inputContent.placeholder = "Results: " + results;
 });
 // Un evento click en el listado de los productos para que, utilizando el botón comprar en cada uno de ellos,
-// se añada el producto al carro. En el listado, cada producto seleccionado para comprar 
+// se añada el producto al carro. En el listado, cada producto seleccionado para comprar
 // aparece con un color de fondo y el botón cambiará a eliminar.
 productsList.addEventListener("click", (ev) => {
   ev.preventDefault();
@@ -128,7 +138,7 @@ productsList.addEventListener("click", (ev) => {
     productElement.classList.add("productSelected");
     addProductCart(productElement.id);
     updateLocalStorage();
-// Lo mismo para quitarlos del carro y que vuelva a aparecer el botón comprar y el fondo original.
+    // Lo mismo para quitarlos del carro y que vuelva a aparecer el botón comprar y el fondo original.
   } else if (clickedElement.classList.contains("deleteBtn")) {
     const productElement = clickedElement.parentNode;
     const purchaseBtn = clickedElement;
@@ -139,4 +149,8 @@ productsList.addEventListener("click", (ev) => {
     removeProductCart(productElement.id);
     updateLocalStorage();
   }
+});
+
+resultsBtn.addEventListener("click", (ev) => {
+  console.log(allProducts.length);
 });
